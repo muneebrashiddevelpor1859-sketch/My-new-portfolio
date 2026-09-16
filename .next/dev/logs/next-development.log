@@ -1,0 +1,24 @@
+{"timestamp":"00:00:02.852","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:04.685","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:00:10.472","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:00:38.912","source":"Server","level":"LOG","message":"✓ Compiled in 406ms"}
+{"timestamp":"00:01:37.867","source":"Server","level":"LOG","message":"✓ Compiled in 437ms"}
+{"timestamp":"00:02:28.059","source":"Server","level":"LOG","message":"✓ Compiled in 105ms"}
+{"timestamp":"00:02:43.247","source":"Server","level":"LOG","message":"✓ Compiled in 166ms"}
+{"timestamp":"00:02:57.792","source":"Server","level":"LOG","message":"✓ Compiled in 140ms"}
+{"timestamp":"00:04:29.039","source":"Server","level":"LOG","message":"✓ Compiled in 812ms"}
+{"timestamp":"00:05:37.149","source":"Server","level":"LOG","message":"✓ Compiled in 527ms"}
+{"timestamp":"00:07:34.363","source":"Server","level":"LOG","message":"✓ Compiled in 1253ms"}
+{"timestamp":"00:08:37.583","source":"Server","level":"LOG","message":"✓ Compiled in 1571ms"}
+{"timestamp":"00:10:17.160","source":"Server","level":"LOG","message":"✓ Compiled in 2s"}
+{"timestamp":"00:11:19.904","source":"Server","level":"LOG","message":"✓ Compiled in 1943ms"}
+{"timestamp":"00:12:24.974","source":"Server","level":"LOG","message":"✓ Compiled in 1600ms"}
+{"timestamp":"00:13:33.242","source":"Server","level":"LOG","message":"✓ Compiled in 1228ms"}
+{"timestamp":"00:15:45.664","source":"Server","level":"LOG","message":"✓ Compiled in 48.7s"}
+{"timestamp":"00:15:47.546","source":"Browser","level":"ERROR","message":"Uncaught ReferenceError: Github is not defined\n    at Footer (src/components/Contact.tsx:4:1)\n    at Home (src\\app\\page.tsx:26:7)\n  \u001b[90m2 |\u001b[0m\n  \u001b[90m3 |\u001b[0m \u001b[36mimport\u001b[0m { motion } \u001b[36mfrom\u001b[0m \u001b[32m\"framer-motion\"\u001b[0m;\n\u001b[31m\u001b[1m>\u001b[0m \u001b[90m4 |\u001b[0m \u001b[36mimport\u001b[0m {\n  \u001b[90m  |\u001b[0m \u001b[31m\u001b[1m^\u001b[0m\n  \u001b[90m5 |\u001b[0m   \u001b[33mArrowUpRight\u001b[0m,\n  \u001b[90m6 |\u001b[0m   \u001b[33mMail\u001b[0m,\n  \u001b[90m7 |\u001b[0m   \u001b[33mMessageCircle\u001b[0m,"}
+{"timestamp":"00:15:47.581","source":"Server","level":"ERROR","message":"[browser] \"\\u001b[31mUncaught ReferenceError: Github is not defined\\u001b[39m\\n\\u001b[31m    at Footer (src/components/Contact.tsx:4:1)\\n    at Home (src\\\\app\\\\page.tsx:26:7)\\u001b[39m\\n  \\u001b[90m2 |\\u001b[0m\\n  \\u001b[90m3 |\\u001b[0m \\u001b[36mimport\\u001b[0m { motion } \\u001b[36mfrom\\u001b[0m \\u001b[32m\\\"framer-motion\\\"\\u001b[0m;\\n\\u001b[31m\\u001b[1m>\\u001b[0m \\u001b[90m4 |\\u001b[0m \\u001b[36mimport\\u001b[0m {\\n  \\u001b[90m  |\\u001b[0m \\u001b[31m\\u001b[1m^\\u001b[0m\\n  \\u001b[90m5 |\\u001b[0m   \\u001b[33mArrowUpRight\\u001b[0m,\\n  \\u001b[90m6 |\\u001b[0m   \\u001b[33mMail\\u001b[0m,\\n  \\u001b[90m7 |\\u001b[0m   \\u001b[33mMessageCircle\\u001b[0m,\""}
+{"timestamp":"00:15:49.601","source":"Server","level":"WARN","message":"⚠ Fast Refresh had to perform a full reload due to a runtime error."}
+{"timestamp":"00:15:49.664","source":"Server","level":"LOG","message":"✓ Compiled in 176ms"}
+{"timestamp":"00:15:51.704","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:16:36.672","source":"Server","level":"LOG","message":"✓ Compiled in 526ms"}
+{"timestamp":"00:16:41.388","source":"Server","level":"LOG","message":"✓ Compiled in 461ms"}
