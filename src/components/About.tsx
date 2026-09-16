@@ -289,7 +289,7 @@ export default function About() {
             </div>
 
             <span className="hidden font-mono text-[10px] text-sky-400/50 sm:block">
-              01 / 04
+              1/4
             </span>
           </motion.div>
         </motion.div>
