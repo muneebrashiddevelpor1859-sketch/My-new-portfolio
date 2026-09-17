@@ -63,6 +63,31 @@ export default function Projects() {
     };
   }, []);
 
+  /*
+   * Scroll direction based variants
+   *
+   * DOWN:
+   * Normal bottom-to-top entrance.
+   *
+   * UP:
+   * Featured content comes from right.
+   * Other cards alternate left / right.
+   */
+  const featuredVariants = {
+    hidden: {
+      opacity: 0,
+      x: scrollDirection === "up" ? 100 : 0,
+      y: scrollDirection === "up" ? 0 : 60,
+      scale: 0.98,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+    },
+  };
+
   return (
     <section
       id="work"
@@ -77,6 +102,7 @@ export default function Projects() {
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Mouse following glow */}
+
         <motion.div
           animate={{
             left: `${mouse.x}%`,
@@ -96,15 +122,14 @@ export default function Projects() {
         />
 
         {/* Ambient glows */}
+
         <div className="absolute left-[15%] top-[20%] h-72 w-72 rounded-full bg-blue-500/5 blur-[120px]" />
 
         <div className="absolute right-[15%] top-[45%] h-80 w-80 rounded-full bg-purple-500/5 blur-[130px]" />
 
         <div className="absolute bottom-[10%] left-[40%] h-72 w-72 rounded-full bg-cyan-400/5 blur-[120px]" />
 
-        {/* =====================================================
-            SKY BLUE LINE
-        ====================================================== */}
+        {/* SKY BLUE LINE */}
 
         <motion.div
           className="absolute left-[-30%] top-[12%] h-px w-[160%]"
@@ -124,9 +149,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            PURPLE LINE
-        ====================================================== */}
+        {/* PURPLE LINE */}
 
         <motion.div
           className="absolute left-[-30%] top-[22%] h-px w-[160%]"
@@ -146,9 +169,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            CYAN LINE
-        ====================================================== */}
+        {/* CYAN LINE */}
 
         <motion.div
           className="absolute left-[-30%] top-[34%] h-px w-[160%]"
@@ -168,9 +189,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            GREEN LINE
-        ====================================================== */}
+        {/* GREEN LINE */}
 
         <motion.div
           className="absolute left-[-30%] top-[46%] h-px w-[160%]"
@@ -190,9 +209,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            PINK LINE
-        ====================================================== */}
+        {/* PINK LINE */}
 
         <motion.div
           className="absolute left-[-30%] top-[58%] h-px w-[160%]"
@@ -212,9 +229,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            ORANGE LINE
-        ====================================================== */}
+        {/* ORANGE LINE */}
 
         <motion.div
           className="absolute left-[-30%] top-[70%] h-px w-[160%]"
@@ -234,9 +249,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            INDIGO LINE
-        ====================================================== */}
+        {/* INDIGO LINE */}
 
         <motion.div
           className="absolute left-[-30%] top-[82%] h-px w-[160%]"
@@ -256,9 +269,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            DIAGONAL BLUE LINE
-        ====================================================== */}
+        {/* DIAGONAL BLUE LINE */}
 
         <motion.div
           className="absolute left-[-20%] top-[28%] h-px w-[140%]"
@@ -280,9 +291,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            DIAGONAL PURPLE LINE
-        ====================================================== */}
+        {/* DIAGONAL PURPLE LINE */}
 
         <motion.div
           className="absolute left-[-20%] top-[63%] h-px w-[140%]"
@@ -304,9 +313,7 @@ export default function Projects() {
           }}
         />
 
-        {/* =====================================================
-            PARTICLES
-        ====================================================== */}
+        {/* PARTICLES */}
 
         <motion.div
           className="absolute left-[20%] top-[30%] h-1 w-1 rounded-full bg-cyan-400 shadow-[0_0_12px_#22d3ee]"
@@ -345,6 +352,7 @@ export default function Projects() {
         />
 
         {/* Grid */}
+
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
@@ -357,6 +365,7 @@ export default function Projects() {
         />
 
         {/* Fade */}
+
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent" />
 
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
@@ -367,15 +376,18 @@ export default function Projects() {
       ====================================================== */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10">
+
         {/* Heading */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 30,
+            x: scrollDirection === "up" ? -90 : 0,
+            y: scrollDirection === "up" ? 0 : 30,
           }}
           whileInView={{
             opacity: 1,
+            x: 0,
             y: 0,
           }}
           viewport={{
@@ -384,6 +396,7 @@ export default function Projects() {
           }}
           transition={{
             duration: 0.7,
+            ease: "easeOut",
           }}
         >
           <div className="flex items-center gap-3">
@@ -424,21 +437,16 @@ export default function Projects() {
               ? "noopener noreferrer"
               : undefined
           }
-          initial={{
-            opacity: 0,
-            y: 60,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
+          variants={featuredVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{
             once: true,
             amount: 0.2,
           }}
           transition={{
-            duration: 0.8,
-            ease: "easeOut",
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="group relative mt-16 block overflow-hidden rounded-[28px]"
         >
@@ -447,9 +455,11 @@ export default function Projects() {
           <div className="absolute inset-0 rounded-[28px] bg-gradient-to-r from-sky-500/40 via-purple-500/10 to-cyan-400/30 opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
 
           <div className="relative m-[1px] grid overflow-hidden rounded-[27px] bg-[#080808] md:grid-cols-[1.05fr_0.95fr]">
+
             {/* Featured visual */}
 
             <div className="relative min-h-[350px] overflow-hidden border-b border-white/5 md:min-h-[460px] md:border-b-0 md:border-r">
+
               {/* Glow */}
 
               <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500/10 blur-[100px] transition-all duration-700 group-hover:bg-sky-400/20" />
@@ -592,107 +602,141 @@ export default function Projects() {
         ====================================================== */}
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((project, index) => (
-            <motion.a
-              key={project.title}
-              href={project.link || "#"}
-              target={
-                project.link
-                  ? "_blank"
-                  : undefined
-              }
-              rel={
-                project.link
-                  ? "noopener noreferrer"
-                  : undefined
-              }
-              initial={{
+          {rest.map((project, index) => {
+            /*
+             * Alternate direction when scrolling upward:
+             *
+             * 0 -> left
+             * 1 -> right
+             * 2 -> left
+             * 3 -> right
+             */
+
+            const cardVariants = {
+              hidden: {
                 opacity: 0,
-                y: 45,
-              }}
-              whileInView={{
+                x:
+                  scrollDirection === "up"
+                    ? index % 2 === 0
+                      ? -100
+                      : 100
+                    : 0,
+                y:
+                  scrollDirection === "up"
+                    ? 0
+                    : 45,
+                scale: 0.97,
+              },
+
+              visible: {
                 opacity: 1,
+                x: 0,
                 y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.08,
-                ease: "easeOut",
-              }}
-              whileHover={{
-                y: -8,
-              }}
-              className="group relative overflow-hidden rounded-2xl"
-            >
-              {/* Hover border */}
+                scale: 1,
+              },
+            };
 
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-purple-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            return (
+              <motion.a
+                key={project.title}
+                href={project.link || "#"}
+                target={
+                  project.link
+                    ? "_blank"
+                    : undefined
+                }
+                rel={
+                  project.link
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{
+                  once: true,
+                  amount: 0.15,
+                }}
+                transition={{
+                  duration: 0.75,
+                  delay:
+                    scrollDirection === "up"
+                      ? index * 0.1
+                      : index * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  y: -8,
+                }}
+                className="group relative overflow-hidden rounded-2xl"
+              >
+                {/* Hover border */}
 
-              <div className="relative m-[1px] flex h-full min-h-[300px] flex-col rounded-[15px] border border-white/[0.08] bg-[#080808] p-7 transition-all duration-500 group-hover:border-sky-400/20 group-hover:bg-[#0a0a0a]">
-                {/* Top */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-purple-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] text-sm font-semibold text-sky-300 transition-all duration-500 group-hover:border-sky-400/30 group-hover:bg-sky-400/10">
-                    {String(index + 1).padStart(
-                      2,
-                      "0"
-                    )}
+                <div className="relative m-[1px] flex h-full min-h-[300px] flex-col rounded-[15px] border border-white/[0.08] bg-[#080808] p-7 transition-all duration-500 group-hover:border-sky-400/20 group-hover:bg-[#0a0a0a]">
+
+                  {/* Top */}
+
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] text-sm font-semibold text-sky-300 transition-all duration-500 group-hover:border-sky-400/30 group-hover:bg-sky-400/10">
+                      {String(index + 1).padStart(
+                        2,
+                        "0"
+                      )}
+                    </div>
+
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition-all duration-300 group-hover:border-sky-400/30 group-hover:text-sky-300">
+                      <ArrowUpRight
+                        size={17}
+                        className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
+                    </div>
                   </div>
 
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition-all duration-300 group-hover:border-sky-400/30 group-hover:text-sky-300">
-                    <ArrowUpRight
-                      size={17}
-                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
+                  {/* Title */}
+
+                  <h3 className="mt-8 text-xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200">
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+
+                  <p className="mt-4 text-sm leading-7 text-zinc-500">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+
+                  <div className="mt-auto flex flex-wrap gap-2 pt-8">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/[0.08] px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-600 transition-colors duration-300 group-hover:border-sky-400/15 group-hover:text-zinc-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
+
+                  {/* Bottom animated line */}
+
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent"
+                    initial={{
+                      width: "0%",
+                    }}
+                    whileHover={{
+                      width: "100%",
+                    }}
+                    transition={{
+                      duration: 0.5,
+                    }}
+                  />
                 </div>
-
-                {/* Title */}
-
-                <h3 className="mt-8 text-xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-
-                <p className="mt-4 text-sm leading-7 text-zinc-500">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-
-                <div className="mt-auto flex flex-wrap gap-2 pt-8">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/[0.08] px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-600 transition-colors duration-300 group-hover:border-sky-400/15 group-hover:text-zinc-400"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Bottom animated line */}
-
-                <motion.div
-                  className="absolute bottom-0 left-0 h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent"
-                  initial={{
-                    width: "0%",
-                  }}
-                  whileHover={{
-                    width: "100%",
-                  }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                />
-              </div>
-            </motion.a>
-          ))}
+              </motion.a>
+            );
+          })}
         </div>
 
         {/* Bottom line */}
