@@ -1,16 +1,8 @@
 "use client";
 
-import React, { ReactNode, useEffect, useState } from "react";
-import Link from "next/link";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowDown,
-  ArrowRight,
   ArrowUpRight,
   Braces,
   Code2,
@@ -23,47 +15,7 @@ import {
   Terminal,
   Zap,
 } from "lucide-react";
-
 import { profile, stats } from "@/lib/data";
-
-// ======================================================
-// Types
-// ======================================================
-
-interface RevealProps {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}
-
-// ======================================================
-// Reveal Animation
-// ======================================================
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: RevealProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.8,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-// ======================================================
-// Tech Stack
-// ======================================================
 
 const stack = [
   "JavaScript",
@@ -75,859 +27,660 @@ const stack = [
   "CSS3",
 ];
 
-// ======================================================
-// Floating Tech Nodes
-// ======================================================
-
 const techNodes = [
   {
     name: "React",
     icon: Code2,
-    className: "left-[2%] top-[18%]",
+    position: "left-[3%] top-[22%]",
   },
   {
     name: "Next.js",
     icon: Layers3,
-    className: "right-[0%] top-[20%]",
+    position: "right-[5%] top-[18%]",
   },
   {
     name: "Node",
     icon: Server,
-    className: "left-[7%] bottom-[22%]",
+    position: "right-[0%] bottom-[24%]",
   },
   {
     name: "MongoDB",
     icon: Database,
-    className: "right-[5%] bottom-[19%]",
+    position: "left-[8%] bottom-[18%]",
   },
 ];
 
-// ======================================================
-// Info Item
-// ======================================================
+export default function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const smoothX = useSpring(mouseX, {
+    stiffness: 70,
+    damping: 20,
+  });
+
+  const smoothY = useSpring(mouseY, {
+    stiffness: 70,
+    damping: 20,
+  });
+
+  const orbX = useTransform(smoothX, [-500, 500], [-25, 25]);
+  const orbY = useTransform(smoothY, [-400, 400], [-20, 20]);
+
+  const cardX = useTransform(smoothX, [-500, 500], [-10, 10]);
+  const cardY = useTransform(smoothY, [-400, 400], [-8, 8]);
+
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  }
+
+  return (
+    <section
+      id="top"
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen overflow-hidden border-b bg-[#03070b] text-white"
+      style={{ borderColor: "rgba(56,189,248,0.12)" }}
+    >
+      {/* ===================================================== */}
+      {/* BACKGROUND VIDEO */}
+      {/* ===================================================== */}
+
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-cover opacity-[0.16]"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 bg-[#03070b]/65" />
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_45%,rgba(14,165,233,0.16),transparent_30%)]" />
+
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#03070b_0%,rgba(3,7,11,0.82)_42%,rgba(3,7,11,0.52)_100%)]" />
+      </div>
+
+      {/* ===================================================== */}
+      {/* PERSPECTIVE GRID */}
+      {/* ===================================================== */}
+
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.20]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(56,189,248,0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(56,189,248,0.07) 1px, transparent 1px)
+          `,
+          backgroundSize: "80px 80px",
+          maskImage:
+            "radial-gradient(circle at center, black 15%, transparent 78%)",
+          WebkitMaskImage:
+            "radial-gradient(circle at center, black 15%, transparent 78%)",
+        }}
+      />
+
+      {/* ===================================================== */}
+      {/* CENTER RADIAL GLOW */}
+      {/* ===================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px]"
+        style={{
+          x: orbX,
+          y: orbY,
+          background:
+            "radial-gradient(circle, rgba(14,165,233,0.13), rgba(37,99,235,0.05) 42%, transparent 70%)",
+        }}
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.6, 1, 0.6],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ===================================================== */}
+      {/* TOP LIGHT */}
+      {/* ===================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-[-20%] top-[12%] h-px w-[55%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #38bdf8, transparent)",
+          boxShadow: "0 0 18px rgba(56,189,248,0.8)",
+        }}
+        animate={{
+          x: ["0%", "260%"],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* ===================================================== */}
+      {/* MAIN */}
+      {/* ===================================================== */}
+
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-[1500px] items-center px-6 pb-24 pt-32 sm:px-10 lg:px-16 xl:px-20">
+        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+          {/* ================================================= */}
+          {/* LEFT */}
+          {/* ================================================= */}
+
+          <motion.div
+            initial={{ opacity: 0, x: -70 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative z-20"
+          >
+            {/* Status */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.6 }}
+              className="mb-8 flex w-fit items-center gap-3 rounded-full border border-sky-400/20 bg-sky-400/[0.05] px-4 py-2.5 backdrop-blur-xl"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute h-full w-full animate-ping rounded-full bg-sky-400 opacity-50" />
+                <span className="relative h-2.5 w-2.5 rounded-full bg-sky-400 shadow-[0_0_14px_#38bdf8]" />
+              </span>
+
+              <span className="text-[11px] font-medium tracking-wide text-sky-200">
+                Open to freelance &amp; full-time work
+              </span>
+            </motion.div>
+
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25 }}
+              className="mb-5 flex items-center gap-3"
+            >
+              <span className="h-px w-12 bg-sky-400" />
+
+              <span className="text-xs uppercase tracking-[0.28em] text-slate-500">
+                Full Stack Developer
+              </span>
+            </motion.div>
+
+            {/* Heading */}
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 90, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.9,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="max-w-4xl font-display text-[3.7rem] font-medium leading-[0.91] tracking-[-0.055em] sm:text-7xl lg:text-[6.4rem] xl:text-[7rem]"
+              >
+                {profile.name}
+              </motion.h1>
+            </div>
+
+            {/* Gradient role */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
+              className="mt-7"
+            >
+              <p className="text-2xl font-medium tracking-tight sm:text-3xl">
+                <span className="bg-gradient-to-r from-sky-300 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  {profile.role}
+                </span>
+              </p>
+            </motion.div>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.7 }}
+              className="mt-7 max-w-xl text-base leading-8 text-slate-400 sm:text-lg"
+            >
+              {profile.tagline}
+            </motion.p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.7 }}
+              className="mt-9 flex flex-wrap gap-3"
+            >
+              <a
+                href="#work"
+                className="group relative flex items-center gap-3 overflow-hidden rounded-full bg-sky-400 px-7 py-3.5 text-sm font-semibold text-[#031018] shadow-[0_0_35px_rgba(56,189,248,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-sky-300 hover:shadow-[0_0_50px_rgba(56,189,248,0.32)]"
+              >
+                <span className="absolute inset-0 -translate-x-full skew-x-[-15deg] bg-white/30 transition-transform duration-700 group-hover:translate-x-[160%]" />
+
+                <span className="relative">Explore my work</span>
+
+                <ArrowUpRight
+                  size={17}
+                  className="relative transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                />
+              </a>
+
+              <a
+                href="#contact"
+                className="group flex items-center gap-3 rounded-full border border-white/[0.10] bg-white/[0.025] px-7 py-3.5 text-sm font-medium text-slate-200 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-sky-400/[0.06]"
+              >
+                Let&apos;s talk
+
+                <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 transition-all duration-300 group-hover:border-sky-400/30">
+                  <ArrowUpRight
+                    size={13}
+                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </span>
+              </a>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.85, duration: 0.7 }}
+              className="mt-14 flex flex-wrap gap-3"
+            >
+              {stats.map((stat) => (
+                <motion.div
+                  key={stat.label}
+                  whileHover={{ y: -4 }}
+                  className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 py-3 backdrop-blur-md"
+                >
+                  <p className="text-[9px] uppercase tracking-[0.18em] text-slate-600">
+                    {stat.label}
+                  </p>
+
+                  <p className="mt-1.5 text-sm font-medium text-slate-200">
+                    {stat.value}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* ================================================= */}
+          {/* RIGHT VISUAL */}
+          {/* ================================================= */}
+
+          <motion.div
+            initial={{ opacity: 0, x: 80, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{
+              duration: 1.1,
+              delay: 0.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative flex min-h-[540px] items-center justify-center lg:min-h-[650px]"
+          >
+            {/* Orbit system */}
+            <motion.div
+              className="absolute h-[340px] w-[340px] rounded-full border border-sky-400/[0.10]"
+              style={{ x: cardX, y: cardY }}
+              animate={{ rotate: 360 }}
+              transition={{
+                duration: 30,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            <motion.div
+              className="absolute h-[460px] w-[460px] rounded-full border border-sky-400/[0.055]"
+              animate={{ rotate: -360 }}
+              transition={{
+                duration: 42,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            <motion.div
+              className="absolute h-[570px] w-[570px] rounded-full border border-white/[0.025]"
+              animate={{ rotate: 360 }}
+              transition={{
+                duration: 60,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            {/* Center glow */}
+            <motion.div
+              className="absolute h-[330px] w-[330px] rounded-full bg-sky-500/[0.08] blur-[90px]"
+              animate={{
+                scale: [1, 1.15, 1],
+                opacity: [0.4, 0.8, 0.4],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Central identity card */}
+            <motion.div
+              style={{ x: cardX, y: cardY }}
+              className="relative z-10 w-full max-w-[430px]"
+            >
+              <IdentityCard />
+            </motion.div>
+
+            {/* Floating tech nodes */}
+            {techNodes.map((node, index) => {
+              const Icon = node.icon;
+
+              return (
+                <motion.div
+                  key={node.name}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    y: [0, index % 2 === 0 ? -10 : 10, 0],
+                  }}
+                  transition={{
+                    opacity: {
+                      delay: 0.8 + index * 0.15,
+                      duration: 0.5,
+                    },
+                    scale: {
+                      delay: 0.8 + index * 0.15,
+                      duration: 0.5,
+                    },
+                    y: {
+                      delay: 1.2 + index * 0.2,
+                      duration: 4 + index,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  className={`absolute ${node.position} z-20 hidden sm:block`}
+                >
+                  <div className="flex items-center gap-2 rounded-full border border-sky-400/15 bg-[#071018]/80 px-3 py-2 shadow-[0_0_25px_rgba(14,165,233,0.06)] backdrop-blur-xl">
+                    <Icon
+                      size={14}
+                      className="text-sky-400"
+                      strokeWidth={1.7}
+                    />
+
+                    <span className="text-[10px] font-medium text-slate-400">
+                      {node.name}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+
+            {/* Decorative coordinate labels */}
+            <div className="absolute left-1/2 top-[4%] -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.25em] text-slate-700">
+              BUILD / CREATE / SHIP
+            </div>
+
+            <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.25em] text-sky-500/40">
+              SYSTEM_READY
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ===================================================== */}
+      {/* STACK STRIP */}
+      {/* ===================================================== */}
+
+      <div className="relative z-20 border-t border-white/[0.07] bg-black/30 backdrop-blur-2xl">
+        <div className="mx-auto flex max-w-[1500px] flex-wrap items-center gap-x-7 gap-y-3 px-6 py-5 sm:px-10 lg:px-16 xl:px-20">
+          <div className="mr-2 flex items-center gap-2">
+            <Braces size={14} className="text-sky-400" />
+
+            <span className="text-[9px] uppercase tracking-[0.25em] text-slate-600">
+              Tech stack
+            </span>
+          </div>
+
+          {stack.map((tech, index) => (
+            <motion.span
+              key={tech}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: index * 0.05,
+                duration: 0.4,
+              }}
+              whileHover={{
+                y: -2,
+                color: "#38bdf8",
+              }}
+              className="cursor-default font-mono text-xs text-slate-500 transition-colors"
+            >
+              {tech}
+            </motion.span>
+          ))}
+        </div>
+      </div>
+
+      {/* Scroll */}
+      <motion.a
+        href="#work"
+        animate={{
+          y: [0, 8, 0],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute bottom-[88px] left-1/2 z-30 hidden -translate-x-1/2 items-center gap-2 text-[9px] uppercase tracking-[0.3em] text-slate-600 lg:flex"
+      >
+        Explore
+
+        <ArrowDown
+          size={13}
+          className="text-sky-400"
+        />
+      </motion.a>
+    </section>
+  );
+}
+
+/* ========================================================= */
+/* IDENTITY CARD */
+/* ========================================================= */
+
+function IdentityCard() {
+  return (
+    <div className="relative">
+      {/* Card glow */}
+      <div className="absolute -inset-8 rounded-full bg-sky-500/[0.05] blur-[70px]" />
+
+      <div className="relative overflow-hidden rounded-[34px] border border-white/[0.10] bg-[#071018]/75 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-8">
+        {/* Animated top line */}
+        <motion.div
+          className="absolute left-0 top-0 h-px w-full"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, #38bdf8, #22d3ee, transparent)",
+            boxShadow: "0 0 20px #38bdf8",
+          }}
+          animate={{
+            x: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 3.5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-sky-400/20 bg-sky-400/[0.07]">
+              <Terminal
+                size={16}
+                className="text-sky-400"
+              />
+            </div>
+
+            <div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-slate-600">
+                Developer.profile
+              </p>
+
+              <p className="mt-0.5 text-xs text-slate-400">
+                Active session
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 rounded-full border border-sky-400/15 bg-sky-400/[0.05] px-2.5 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />
+            <span className="font-mono text-[9px] text-sky-400">
+              ONLINE
+            </span>
+          </div>
+        </div>
+
+        {/* Main identity */}
+        <div className="relative mt-10">
+          <div className="flex h-24 w-24 items-center justify-center rounded-[28px] border border-sky-400/20 bg-gradient-to-br from-sky-400/[0.13] to-blue-600/[0.04] shadow-[0_0_50px_rgba(14,165,233,0.10)]">
+            <Code2
+              size={42}
+              strokeWidth={1.2}
+              className="text-sky-400"
+            />
+          </div>
+
+          <motion.div
+            className="absolute -right-1 top-[-8px] flex h-9 w-9 items-center justify-center rounded-full border border-sky-400/20 bg-[#071018]"
+            animate={{
+              rotate: [0, 10, -10, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <Sparkles
+              size={15}
+              className="text-cyan-400"
+            />
+          </motion.div>
+        </div>
+
+        <h2 className="mt-7 font-display text-3xl tracking-tight text-white sm:text-4xl">
+          {profile.name}
+        </h2>
+
+        <p className="mt-2 text-sm text-sky-400">
+          {profile.role}
+        </p>
+
+        {/* Divider */}
+        <div className="my-7 h-px bg-gradient-to-r from-sky-400/30 via-white/[0.06] to-transparent" />
+
+        {/* Mini data */}
+        <div className="grid grid-cols-2 gap-3">
+          <InfoItem
+            icon={<Monitor size={14} />}
+            label="Frontend"
+            value="React / Next"
+          />
+
+          <InfoItem
+            icon={<Server size={14} />}
+            label="Backend"
+            value="Node / Express"
+          />
+
+          <InfoItem
+            icon={<Database size={14} />}
+            label="Database"
+            value="MongoDB"
+          />
+
+          <InfoItem
+            icon={<Globe2 size={14} />}
+            label="Location"
+            value="Lahore, PK"
+          />
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-6 flex items-center justify-between rounded-2xl border border-white/[0.06] bg-black/20 px-4 py-3">
+          <div className="flex items-center gap-2">
+            <Zap
+              size={13}
+              className="text-sky-400"
+            />
+
+            <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-600">
+              Ready to build
+            </span>
+          </div>
+
+          <span className="font-mono text-[9px] text-sky-400/60">
+            v2.0
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ========================================================= */
+/* INFO ITEM */
+/* ========================================================= */
 
 function InfoItem({
-  icon: Icon,
+  icon,
   label,
   value,
 }: {
-  icon: React.ElementType;
+  icon: React.ReactNode;
   label: string;
   value: string;
 }) {
   return (
     <motion.div
-      whileHover={{ x: 4 }}
-      transition={{ duration: 0.2 }}
-      className="group flex items-center gap-3"
+      whileHover={{ y: -3 }}
+      className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-3.5 transition-colors duration-300 hover:border-sky-400/20 hover:bg-sky-400/[0.035]"
     >
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.035] text-slate-400 transition-colors group-hover:border-cyan-300/20 group-hover:text-cyan-200">
-        <Icon size={15} />
-      </div>
+      <div className="flex items-center gap-2 text-sky-400/70">
+        {icon}
 
-      <div>
-        <p className="text-[9px] uppercase tracking-[0.18em] text-slate-500">
+        <span className="text-[9px] uppercase tracking-[0.14em] text-slate-600">
           {label}
-        </p>
-
-        <p className="mt-0.5 text-xs font-medium text-slate-200">
-          {value}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-// ======================================================
-// Identity Card
-// ======================================================
-
-function IdentityCard() {
-  return (
-    <motion.div
-      whileHover={{ y: -8 }}
-      transition={{
-        duration: 0.4,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="relative w-full max-w-[390px] overflow-hidden rounded-[28px] border border-white/[0.09] bg-[#071018]/80 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
-    >
-      {/* Card glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(103,232,249,0.12),transparent_35%),radial-gradient(circle_at_100%_100%,rgba(59,130,246,0.08),transparent_35%)]" />
-
-      {/* Top */}
-      <div className="relative flex items-center justify-between border-b border-white/[0.07] pb-4">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-300/10 text-cyan-200">
-            <Code2 size={16} />
-          </div>
-
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500">
-              developer.profile
-            </p>
-
-            <p className="text-xs text-slate-300">
-              Active session
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-1.5 rounded-full border border-emerald-300/10 bg-emerald-300/5 px-2.5 py-1">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_10px_rgba(110,231,183,0.9)]" />
-
-          <span className="text-[9px] font-semibold tracking-[0.16em] text-emerald-200">
-            ONLINE
-          </span>
-        </div>
-      </div>
-
-      {/* Profile */}
-      <div className="relative mt-5 flex items-center gap-4">
-        <div className="relative">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-200/10 bg-gradient-to-br from-cyan-300/15 to-blue-500/10">
-            <Terminal
-              size={27}
-              className="text-cyan-200"
-            />
-          </div>
-
-          <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border border-[#071018] bg-emerald-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#071018]" />
-          </span>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold tracking-tight text-white">
-            {profile.name}
-          </h3>
-
-          <p className="mt-1 text-xs text-slate-400">
-            {profile.role}
-          </p>
-        </div>
-      </div>
-
-      {/* Info */}
-      <div className="relative mt-6 grid grid-cols-2 gap-x-5 gap-y-5">
-        <InfoItem
-          icon={Monitor}
-          label="Frontend"
-          value="React / Next"
-        />
-
-        <InfoItem
-          icon={Server}
-          label="Backend"
-          value="Node / Express"
-        />
-
-        <InfoItem
-          icon={Database}
-          label="Database"
-          value="MongoDB"
-        />
-
-        <InfoItem
-          icon={Globe2}
-          label="Location"
-          value="Lahore, PK"
-        />
-      </div>
-
-      {/* Bottom status */}
-      <div className="relative mt-6 flex items-center justify-between rounded-2xl border border-white/[0.06] bg-white/[0.025] px-4 py-3">
-        <div>
-          <p className="text-[9px] uppercase tracking-[0.18em] text-slate-500">
-            Status
-          </p>
-
-          <p className="mt-1 text-xs font-medium text-slate-200">
-            Ready to build
-          </p>
-        </div>
-
-        <span className="font-mono text-[10px] text-cyan-200/60">
-          v2.0
         </span>
       </div>
+
+      <p className="mt-2 text-xs font-medium text-slate-300">
+        {value}
+      </p>
     </motion.div>
-  );
-}
-
-// ======================================================
-// Hero
-// ======================================================
-
-export default function Hero() {
-  // ====================================================
-  // Mouse Parallax
-  // ====================================================
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, {
-    stiffness: 70,
-    damping: 20,
-  });
-
-  const springY = useSpring(mouseY, {
-    stiffness: 70,
-    damping: 20,
-  });
-
-  const orbX = useTransform(
-    springX,
-    [-1, 1],
-    [-22, 22]
-  );
-
-  const orbY = useTransform(
-    springY,
-    [-1, 1],
-    [-22, 22]
-  );
-
-  // ====================================================
-  // Scroll
-  // ====================================================
-
-  const [scrollProgress, setScrollProgress] =
-    useState(0);
-
-  const [scrollingUp, setScrollingUp] =
-    useState(false);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    let timeout: ReturnType<typeof setTimeout>;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Hero scroll progress
-      const heroHeight = window.innerHeight;
-
-      const progress = Math.min(
-        Math.max(currentScrollY / heroHeight, 0),
-        1
-      );
-
-      setScrollProgress(progress);
-
-      // Detect upward scrolling
-      if (
-        currentScrollY < lastScrollY &&
-        currentScrollY > 20
-      ) {
-        setScrollingUp(true);
-
-        clearTimeout(timeout);
-
-        timeout = setTimeout(() => {
-          setScrollingUp(false);
-        }, 900);
-      } else if (currentScrollY > lastScrollY) {
-        setScrollingUp(false);
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
-
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  // ====================================================
-  // Mouse
-  // ====================================================
-
-  const handleMouseMove = (
-    e: React.MouseEvent<HTMLElement>
-  ) => {
-    const rect =
-      e.currentTarget.getBoundingClientRect();
-
-    const x =
-      (e.clientX - rect.left) / rect.width;
-
-    const y =
-      (e.clientY - rect.top) / rect.height;
-
-    mouseX.set(x * 2 - 1);
-    mouseY.set(y * 2 - 1);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  // ====================================================
-  // Hero Scroll Animation
-  // ====================================================
-
-  const heroScale =
-    1 - scrollProgress * 0.055;
-
-  const heroOpacity =
-    1 - scrollProgress * 0.5;
-
-  const contentY =
-    scrollProgress * -90;
-
-  const backgroundScale =
-    1 + scrollProgress * 0.09;
-
-  return (
-    <section
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen overflow-hidden bg-[#02070b] text-white"
-    >
-      {/* ==================================================
-          HERO WRAPPER
-      ================================================== */}
-
-      <motion.div
-        style={{
-          scale: heroScale,
-          opacity: heroOpacity,
-        }}
-        className="relative min-h-screen origin-top"
-      >
-        {/* ==================================================
-            BACKGROUND VIDEO
-        ================================================== */}
-
-        <motion.div
-          style={{
-            scale: backgroundScale,
-            x: orbX,
-            y: orbY,
-          }}
-          className="absolute inset-0"
-        >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source
-              src="/hero-video.mp4"
-              type="video/mp4"
-            />
-          </video>
-
-          {/* Main darkness */}
-          <div className="absolute inset-0 bg-black/65" />
-
-          {/* Left gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#02070b] via-[#02070b]/85 to-[#02070b]/35" />
-
-          {/* Bottom fade */}
-          <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-[#02070b] to-transparent" />
-
-          {/* Top fade */}
-          <div className="absolute inset-x-0 top-0 h-[18%] bg-gradient-to-b from-[#02070b]/70 to-transparent" />
-
-          {/* Center glow */}
-          <div className="absolute left-[55%] top-[42%] h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/[0.035] blur-[130px]" />
-        </motion.div>
-
-        {/* ==================================================
-            MOVING TOP LIGHT
-        ================================================== */}
-
-        <motion.div
-          animate={{
-            x: ["-10%", "15%", "-5%"],
-            opacity: [0.2, 0.45, 0.2],
-          }}
-          transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="pointer-events-none absolute left-0 top-[-15%] z-[1] h-[35%] w-[70%] rounded-full bg-cyan-200/[0.035] blur-[100px]"
-        />
-
-        {/* ==================================================
-            SCROLL-UP FOG
-        ================================================== */}
-
-        <div className="pointer-events-none absolute inset-0 z-[4] overflow-hidden">
-          {/* Large fog */}
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: scrollingUp ? 0.75 : 0,
-              x: scrollingUp
-                ? ["-12%", "8%", "-3%"]
-                : "-12%",
-              y: scrollingUp
-                ? [90, 20, -70]
-                : 100,
-              scale: scrollingUp
-                ? [0.9, 1.12, 1.25]
-                : 0.85,
-            }}
-            transition={{
-              duration: 3.8,
-              ease: "easeInOut",
-            }}
-            className="absolute -bottom-[15%] left-[-8%] h-[50%] w-[85%] rounded-[50%] bg-gradient-to-r from-white/[0.02] via-slate-200/[0.08] to-transparent blur-[90px]"
-          />
-
-          {/* Fog cloud */}
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: scrollingUp ? 0.65 : 0,
-              x: scrollingUp
-                ? [0, 90, 170]
-                : 0,
-              y: scrollingUp
-                ? [110, 30, -100]
-                : 100,
-              scale: scrollingUp
-                ? [0.7, 1, 1.35]
-                : 0.7,
-            }}
-            transition={{
-              duration: 3.1,
-              ease: "easeOut",
-            }}
-            className="absolute bottom-[2%] left-[25%] h-72 w-72 rounded-full bg-white/[0.055] blur-[85px]"
-          />
-
-          {/* Cyan mist */}
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: scrollingUp ? 0.6 : 0,
-              x: scrollingUp
-                ? [120, 20, -80]
-                : 120,
-              y: scrollingUp
-                ? [80, 0, -110]
-                : 80,
-              scale: scrollingUp
-                ? [0.75, 1.1, 1.25]
-                : 0.75,
-            }}
-            transition={{
-              duration: 3.5,
-              delay: 0.12,
-              ease: "easeOut",
-            }}
-            className="absolute bottom-[8%] right-[12%] h-80 w-80 rounded-full bg-cyan-100/[0.045] blur-[105px]"
-          />
-
-          {/* Wide drifting fog */}
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: scrollingUp
-                ? [0, 0.55, 0]
-                : 0,
-              x: scrollingUp
-                ? ["-20%", "10%", "30%"]
-                : "-20%",
-              y: scrollingUp
-                ? [70, -20, -120]
-                : 70,
-              rotate: scrollingUp
-                ? [0, 5, -2]
-                : 0,
-            }}
-            transition={{
-              duration: 4.2,
-              ease: "easeInOut",
-            }}
-            className="absolute bottom-0 left-0 h-[30%] w-[130%] rounded-[50%] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent blur-[55px]"
-          />
-
-          {/* Small floating fog */}
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: scrollingUp
-                ? [0, 0.5, 0]
-                : 0,
-              x: scrollingUp
-                ? [0, -80, -160]
-                : 0,
-              y: scrollingUp
-                ? [80, 0, -130]
-                : 80,
-              scale: scrollingUp
-                ? [0.7, 1, 1.25]
-                : 0.7,
-            }}
-            transition={{
-              duration: 3.4,
-              delay: 0.2,
-              ease: "easeOut",
-            }}
-            className="absolute bottom-[10%] right-[30%] h-56 w-56 rounded-full bg-slate-100/[0.045] blur-[75px]"
-          />
-        </div>
-
-        {/* ==================================================
-            PERSPECTIVE GRID
-        ================================================== */}
-
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[42%] overflow-hidden opacity-30 [mask-image:linear-gradient(to_top,black,transparent)]">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)
-              `,
-              backgroundSize: "70px 70px",
-              transform:
-                "perspective(500px) rotateX(60deg) scale(1.5)",
-              transformOrigin: "bottom center",
-            }}
-          />
-        </div>
-
-        {/* ==================================================
-            MAIN CONTENT
-        ================================================== */}
-
-        <motion.div
-          style={{
-            y: contentY,
-          }}
-          className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-center px-5 pb-20 pt-28 sm:px-8 lg:px-10"
-        >
-          <div className="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
-            {/* ==================================================
-                LEFT CONTENT
-            ================================================== */}
-
-            <div className="max-w-3xl">
-              {/* Status */}
-              <Reveal delay={0.05}>
-                <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-white/[0.035] px-3.5 py-2 backdrop-blur-xl">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60" />
-
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-300" />
-                  </span>
-
-                  <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-slate-300">
-                    Open to freelance & full-time work
-                  </span>
-                </div>
-              </Reveal>
-
-              {/* Eyebrow */}
-              <Reveal delay={0.12}>
-                <div className="mb-5 flex items-center gap-3">
-                  <div className="h-px w-10 bg-cyan-300/50" />
-
-                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200/80">
-                    Full Stack Developer
-                  </span>
-                </div>
-              </Reveal>
-
-              {/* Name */}
-              <Reveal delay={0.18}>
-                <h1 className="max-w-4xl text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.065em] text-white">
-                  {profile.name}
-                </h1>
-              </Reveal>
-
-              {/* Role */}
-              <Reveal delay={0.24}>
-                <div className="mt-6 flex items-center gap-3">
-                  <Sparkles
-                    size={17}
-                    className="text-cyan-200"
-                  />
-
-                  <p className="text-lg font-medium tracking-tight text-slate-300 sm:text-xl">
-                    {profile.role}
-                  </p>
-                </div>
-              </Reveal>
-
-              {/* Tagline */}
-              <Reveal delay={0.3}>
-                <p className="mt-6 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
-                  {profile.tagline}
-                </p>
-              </Reveal>
-
-              {/* CTA */}
-              <Reveal delay={0.38}>
-                <div className="mt-9 flex flex-wrap items-center gap-3">
-                  <Link
-                    href="#work"
-                    className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-100 hover:shadow-[0_15px_45px_rgba(103,232,249,0.18)]"
-                  >
-                    Explore my work
-
-                    <ArrowUpRight
-                      size={17}
-                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </Link>
-
-                  <Link
-                    href="#contact"
-                    className="group inline-flex items-center gap-3 rounded-full border border-white/[0.1] bg-white/[0.035] px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200/20 hover:bg-white/[0.07]"
-                  >
-                    Let's talk
-
-                    <ArrowRight
-                      size={17}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </Link>
-                </div>
-              </Reveal>
-
-              {/* Stats */}
-              <Reveal delay={0.46}>
-                <div className="mt-12 grid max-w-2xl grid-cols-3 divide-x divide-white/[0.08] border-y border-white/[0.07] py-5">
-                  {stats
-                    .slice(0, 3)
-                    .map((item, index) => (
-                      <div
-                        key={index}
-                        className="px-4 first:pl-0 last:pr-0"
-                      >
-                        <p className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
-                          {item.value}
-                        </p>
-
-                        <p className="mt-1 text-[9px] uppercase tracking-[0.16em] text-slate-500">
-                          {item.label}
-                        </p>
-                      </div>
-                    ))}
-                </div>
-              </Reveal>
-            </div>
-
-            {/* ==================================================
-                RIGHT CONTENT
-            ================================================== */}
-
-            <div className="relative mx-auto flex min-h-[580px] w-full max-w-[560px] items-center justify-center lg:min-h-[650px]">
-              {/* Outer orbit */}
-              <motion.div
-                style={{
-                  x: orbX,
-                  y: orbY,
-                }}
-                className="absolute h-[470px] w-[470px] rounded-full border border-white/[0.055]"
-              />
-
-              {/* Middle orbit */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 45,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute h-[390px] w-[390px] rounded-full border border-dashed border-cyan-200/[0.08]"
-              />
-
-              {/* Inner orbit */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{
-                  duration: 30,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute h-[300px] w-[300px] rounded-full border border-white/[0.055]"
-              />
-
-              {/* Center glow */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.25, 0.4, 0.25],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute h-64 w-64 rounded-full bg-cyan-300/[0.08] blur-[90px]"
-              />
-
-              {/* Identity Card */}
-              <motion.div
-                style={{
-                  x: useTransform(
-                    springX,
-                    [-1, 1],
-                    [-12, 12]
-                  ),
-                  y: useTransform(
-                    springY,
-                    [-1, 1],
-                    [-12, 12]
-                  ),
-                }}
-                className="relative z-20 w-full max-w-[390px]"
-              >
-                <IdentityCard />
-              </motion.div>
-
-              {/* Floating Nodes */}
-              {techNodes.map((node, index) => {
-                const Icon = node.icon;
-
-                return (
-                  <motion.div
-                    key={node.name}
-                    animate={{
-                      y: [0, -12, 0],
-                      rotate: [0, 2, 0],
-                    }}
-                    transition={{
-                      duration: 4 + index,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: index * 0.3,
-                    }}
-                    className={`absolute ${node.className} z-30`}
-                  >
-                    <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-[#071018]/75 px-3 py-2 shadow-xl backdrop-blur-xl">
-                      <Icon
-                        size={13}
-                        className="text-cyan-200"
-                      />
-
-                      <span className="text-[10px] font-medium text-slate-300">
-                        {node.name}
-                      </span>
-                    </div>
-                  </motion.div>
-                );
-              })}
-
-              {/* Coordinates */}
-              <div className="absolute right-0 top-[8%] hidden font-mono text-[9px] tracking-[0.15em] text-slate-600 sm:block">
-                31.5204° N
-              </div>
-
-              <div className="absolute bottom-[10%] left-0 hidden font-mono text-[9px] tracking-[0.15em] text-slate-600 sm:block">
-                74.3587° E
-              </div>
-
-              {/* Symbols */}
-              <div className="absolute left-[12%] top-[13%] text-cyan-200/20">
-                <Braces size={25} />
-              </div>
-
-              <div className="absolute bottom-[14%] right-[12%] text-cyan-200/20">
-                <Zap size={22} />
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ==================================================
-            STACK STRIP
-        ================================================== */}
-
-        <motion.div
-          style={{
-            opacity: 1 - scrollProgress * 0.8,
-          }}
-          className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/[0.06] bg-black/20 backdrop-blur-md"
-        >
-          <div className="mx-auto flex max-w-7xl items-center gap-5 overflow-hidden px-5 py-4 sm:px-8 lg:px-10">
-            <div className="flex shrink-0 items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-slate-600">
-              <Layers3 size={13} />
-              Stack
-            </div>
-
-            <div className="h-4 w-px bg-white/[0.08]" />
-
-            <div className="flex min-w-max items-center gap-6">
-              {stack.map((item) => (
-                <span
-                  key={item}
-                  className="text-[10px] font-medium text-slate-500 transition-colors hover:text-slate-200"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ==================================================
-            SCROLL INDICATOR
-        ================================================== */}
-
-        <motion.div
-          animate={{
-            opacity:
-              scrollProgress > 0.15 ? 0 : 1,
-            y:
-              scrollProgress > 0.15 ? 10 : 0,
-          }}
-          className="absolute bottom-20 left-1/2 z-30 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
-        >
-          <span className="text-[9px] font-medium uppercase tracking-[0.3em] text-slate-500">
-            Explore
-          </span>
-
-          <motion.div
-            animate={{ y: [0, 7, 0] }}
-            transition={{
-              duration: 1.7,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.025]"
-          >
-            <ArrowDown
-              size={14}
-              className="text-slate-400"
-            />
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* ==================================================
-          BOTTOM EDGE GLOW
-      ================================================== */}
-
-      <motion.div
-        style={{
-          opacity: scrollProgress * 0.7,
-        }}
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-40 h-24 bg-gradient-to-t from-cyan-300/[0.025] to-transparent"
-      />
-    </section>
   );
 }
