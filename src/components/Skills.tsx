@@ -32,17 +32,17 @@ const icons: Record<
 };
 
 const accentColors = [
-  "#38bdf8",
-  "#22d3ee",
-  "#818cf8",
+  "#0284c7",
+  "#0891b2",
+  "#6366f1",
 ];
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden border-b bg-[#03070b] text-white"
-      style={{ borderColor: "rgba(56,189,248,0.12)" }}
+      className="relative overflow-hidden border-b bg-[#f8f7f3] text-slate-950"
+      style={{ borderColor: "rgba(15,23,42,0.08)" }}
     >
       {/* =====================================================
           BACKGROUND
@@ -51,10 +51,10 @@ export default function Skills() {
       <div className="pointer-events-none absolute inset-0">
         {/* Grid */}
         <div
-          className="absolute inset-0 opacity-[0.055]"
+          className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(56,189,248,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.2) 1px, transparent 1px)",
+              "linear-gradient(rgba(15,23,42,0.30) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.30) 1px, transparent 1px)",
             backgroundSize: "70px 70px",
           }}
         />
@@ -80,7 +80,7 @@ export default function Skills() {
         <motion.div
           className="absolute bottom-[-180px] left-[-100px] h-[450px] w-[450px] rounded-full blur-[140px]"
           style={{
-            background: "rgba(37,99,235,0.08)",
+            background: "rgba(37,99,235,0.07)",
           }}
           animate={{
             scale: [1, 1.2, 1],
@@ -98,7 +98,7 @@ export default function Skills() {
           style={{
             background:
               "linear-gradient(90deg, transparent, #38bdf8, transparent)",
-            boxShadow: "0 0 18px rgba(56,189,248,0.8)",
+            boxShadow: "0 0 18px rgba(56,189,248,0.45)",
           }}
           animate={{
             x: ["0%", "210%"],
@@ -116,7 +116,7 @@ export default function Skills() {
           style={{
             background:
               "linear-gradient(90deg, transparent, #22d3ee, transparent)",
-            boxShadow: "0 0 18px rgba(34,211,238,0.7)",
+            boxShadow: "0 0 18px rgba(34,211,238,0.4)",
           }}
           animate={{
             x: ["0%", "-210%"],
@@ -161,22 +161,22 @@ export default function Skills() {
           >
             {/* Label */}
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-9 bg-sky-400 shadow-[0_0_12px_#38bdf8]" />
+              <span className="h-px w-9 bg-sky-500 shadow-[0_0_12px_rgba(56,189,248,0.5)]" />
 
-              <span className="text-xs uppercase tracking-[0.22em] text-sky-400">
+              <span className="text-xs uppercase tracking-[0.22em] text-sky-600">
                 Skills
               </span>
 
               <Sparkles
                 size={14}
-                className="text-sky-400"
+                className="text-sky-500"
               />
             </div>
 
             {/* Heading */}
-            <h2 className="max-w-xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
+            <h2 className="max-w-xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-slate-950 sm:text-5xl lg:text-6xl">
               The tools
-              <span className="block mt-2 text-slate-500">
+              <span className="mt-2 block text-slate-400">
                 I reach for.
               </span>
             </h2>
@@ -198,18 +198,18 @@ export default function Skills() {
                 delay: 0.35,
                 duration: 0.6,
               }}
-              className="mt-10 flex w-fit items-center gap-5 rounded-2xl border border-white/[0.07] bg-white/[0.025] px-5 py-4 backdrop-blur-xl"
+              className="mt-10 flex w-fit items-center gap-5 rounded-2xl border border-slate-900/[0.07] bg-white/70 px-5 py-4 shadow-[0_12px_35px_rgba(15,23,42,0.055)] backdrop-blur-xl"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-sky-400/20 bg-sky-400/[0.06]">
-                <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_14px_#38bdf8]" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-sky-500/20 bg-sky-50">
+                <span className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_14px_rgba(56,189,248,0.6)]" />
               </div>
 
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-600">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
                   Tech Stack
                 </p>
 
-                <p className="mt-1 text-sm text-slate-300">
+                <p className="mt-1 text-sm text-slate-600">
                   Frontend + Backend
                 </p>
               </div>
@@ -271,18 +271,18 @@ export default function Skills() {
                   <div
                     className="absolute -inset-1 rounded-3xl opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
                     style={{
-                      background: `${accent}12`,
+                      background: `${accent}10`,
                     }}
                   />
 
                   {/* Category card */}
-                  <div className="relative h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-[#071018]/75 p-5 backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-sky-400/25 group-hover:bg-[#08131c]">
+                  <div className="relative h-full overflow-hidden rounded-3xl border border-slate-900/[0.08] bg-white/75 p-5 shadow-[0_14px_45px_rgba(15,23,42,0.055)] backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-sky-400/30 group-hover:bg-white">
                     {/* Top animated line */}
                     <motion.div
                       className="absolute left-0 top-0 h-px w-full"
                       style={{
                         background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-                        boxShadow: `0 0 14px ${accent}`,
+                        boxShadow: `0 0 14px ${accent}70`,
                       }}
                       animate={{
                         x: ["-100%", "100%"],
@@ -298,18 +298,18 @@ export default function Skills() {
                     {/* Category header */}
                     <div className="mb-5 flex items-center justify-between">
                       <div>
-                        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-600">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
                           0{groupIndex + 1}
                         </span>
 
-                        <h3 className="mt-1 text-sm font-medium text-slate-300">
+                        <h3 className="mt-1 text-sm font-medium text-slate-800">
                           {group.category}
                         </h3>
                       </div>
 
                       <ArrowUpRight
                         size={16}
-                        className="text-slate-700 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-sky-400"
+                        className="text-slate-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-sky-500"
                       />
                     </div>
 
@@ -341,10 +341,10 @@ export default function Skills() {
                             whileHover={{
                               x: 5,
                             }}
-                            className="group/item flex items-center gap-3 rounded-xl border border-white/[0.05] bg-black/20 p-3 transition-all duration-300 hover:border-sky-400/20 hover:bg-sky-400/[0.05]"
+                            className="group/item flex items-center gap-3 rounded-xl border border-slate-900/[0.055] bg-slate-50/80 p-3 transition-all duration-300 hover:border-sky-400/25 hover:bg-sky-50/70"
                           >
                             {/* Icon */}
-                            <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.025] transition-all duration-300 group-hover/item:border-sky-400/25 group-hover/item:bg-sky-400/[0.07]">
+                            <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-900/[0.06] bg-white shadow-[0_4px_12px_rgba(15,23,42,0.04)] transition-all duration-300 group-hover/item:border-sky-400/25 group-hover/item:bg-white">
                               {Icon && (
                                 <Icon
                                   size={17}
@@ -356,7 +356,7 @@ export default function Skills() {
                               )}
 
                               <span
-                                className="absolute inset-0 rounded-lg opacity-0 blur-md transition-opacity duration-300 group-hover/item:opacity-30"
+                                className="absolute inset-0 rounded-lg opacity-0 blur-md transition-opacity duration-300 group-hover/item:opacity-20"
                                 style={{
                                   background: accent,
                                 }}
@@ -364,12 +364,12 @@ export default function Skills() {
                             </span>
 
                             {/* Name */}
-                            <span className="text-[14px] text-slate-400 transition-colors duration-300 group-hover/item:text-slate-200">
+                            <span className="text-[14px] text-slate-600 transition-colors duration-300 group-hover/item:text-slate-900">
                               {item}
                             </span>
 
                             {/* Status */}
-                            <span className="ml-auto h-1.5 w-1.5 rounded-full bg-sky-400/40 transition-all duration-300 group-hover/item:bg-sky-400 group-hover/item:shadow-[0_0_8px_#38bdf8]" />
+                            <span className="ml-auto h-1.5 w-1.5 rounded-full bg-sky-400/30 transition-all duration-300 group-hover/item:bg-sky-500 group-hover/item:shadow-[0_0_8px_rgba(56,189,248,0.7)]" />
                           </motion.div>
                         );
                       })}
@@ -377,7 +377,7 @@ export default function Skills() {
 
                     {/* Bottom glow */}
                     <div
-                      className="absolute -bottom-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-30"
+                      className="absolute -bottom-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-25"
                       style={{
                         background: accent,
                       }}
@@ -410,7 +410,7 @@ export default function Skills() {
           style={{
             background:
               "linear-gradient(90deg, #38bdf8, rgba(56,189,248,0.12), transparent)",
-            boxShadow: "0 0 12px rgba(56,189,248,0.45)",
+            boxShadow: "0 0 12px rgba(56,189,248,0.25)",
           }}
         />
       </div>

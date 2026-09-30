@@ -46,6 +46,7 @@
 //     };
 
 //     window.addEventListener("mousemove", handleMouseMove);
+
 //     window.addEventListener("scroll", handleScroll, {
 //       passive: true,
 //     });
@@ -73,6 +74,7 @@
 //    * Featured content comes from right.
 //    * Other cards alternate left / right.
 //    */
+
 //   const featuredVariants = {
 //     hidden: {
 //       opacity: 0,
@@ -80,6 +82,7 @@
 //       y: scrollDirection === "up" ? 0 : 60,
 //       scale: 0.98,
 //     },
+
 //     visible: {
 //       opacity: 1,
 //       x: 0,
@@ -101,6 +104,7 @@
 //       ====================================================== */}
 
 //       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
 //         {/* Mouse following glow */}
 
 //         <motion.div
@@ -553,6 +557,7 @@
 //             {/* Featured content */}
 
 //             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
+
 //               <div className="mb-5 flex items-center gap-3">
 //                 <span className="h-px w-8 bg-sky-400/70" />
 
@@ -593,6 +598,7 @@
 //                   <ExternalLink size={14} />
 //                 </span>
 //               </div>
+
 //             </div>
 //           </div>
 //         </motion.a>
@@ -602,7 +608,9 @@
 //         ====================================================== */}
 
 //         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
 //           {rest.map((project, index) => {
+
 //             /*
 //              * Alternate direction when scrolling upward:
 //              *
@@ -670,6 +678,7 @@
 //                 }}
 //                 className="group relative overflow-hidden rounded-2xl"
 //               >
+
 //                 {/* Hover border */}
 
 //                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-purple-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -679,6 +688,7 @@
 //                   {/* Top */}
 
 //                   <div className="flex items-start justify-between gap-4">
+
 //                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] text-sm font-semibold text-sky-300 transition-all duration-500 group-hover:border-sky-400/30 group-hover:bg-sky-400/10">
 //                       {String(index + 1).padStart(
 //                         2,
@@ -692,6 +702,7 @@
 //                         className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
 //                       />
 //                     </div>
+
 //                   </div>
 
 //                   {/* Title */}
@@ -733,10 +744,127 @@
 //                       duration: 0.5,
 //                     }}
 //                   />
+
 //                 </div>
 //               </motion.a>
 //             );
 //           })}
+
+//           {/* =====================================================
+//               ADDITIONAL RESTAURANT PROJECT
+//           ====================================================== */}
+
+//           <motion.a
+//             href="https://restorent-project-old.vercel.app/"
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             variants={{
+//               hidden: {
+//                 opacity: 0,
+//                 y: 45,
+//                 scale: 0.97,
+//               },
+
+//               visible: {
+//                 opacity: 1,
+//                 y: 0,
+//                 scale: 1,
+//               },
+//             }}
+//             initial="hidden"
+//             whileInView="visible"
+//             viewport={{
+//               once: true,
+//               amount: 0.15,
+//             }}
+//             transition={{
+//               duration: 0.75,
+//               delay: rest.length * 0.08,
+//               ease: [0.22, 1, 0.36, 1],
+//             }}
+//             whileHover={{
+//               y: -8,
+//             }}
+//             className="group relative overflow-hidden rounded-2xl"
+//           >
+
+//             {/* Hover border */}
+
+//             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-purple-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+//             <div className="relative m-[1px] flex h-full min-h-[300px] flex-col rounded-[15px] border border-white/[0.08] bg-[#080808] p-7 transition-all duration-500 group-hover:border-sky-400/20 group-hover:bg-[#0a0a0a]">
+
+//               {/* Top */}
+
+//               <div className="flex items-start justify-between gap-4">
+
+//                 <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] text-sm font-semibold text-sky-300 transition-all duration-500 group-hover:border-sky-400/30 group-hover:bg-sky-400/10">
+//                   {String(rest.length + 1).padStart(
+//                     2,
+//                     "0"
+//                   )}
+//                 </div>
+
+//                 <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition-all duration-300 group-hover:border-sky-400/30 group-hover:text-sky-300">
+//                   <ArrowUpRight
+//                     size={17}
+//                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+//                   />
+//                 </div>
+
+//               </div>
+
+//               {/* Title */}
+
+//               <h3 className="mt-8 text-xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200">
+//                 Restaurant Project
+//               </h3>
+
+//               {/* Description */}
+
+//               <p className="mt-4 text-sm leading-7 text-zinc-500">
+//                 A modern restaurant website crafted with an immersive
+//                 interface, smooth interactions and a premium digital
+//                 dining experience.
+//               </p>
+
+//               {/* Tags */}
+
+//               <div className="mt-auto flex flex-wrap gap-2 pt-8">
+
+//                 {[
+//                   "React",
+//                   "Restaurant",
+//                   "UI/UX",
+//                 ].map((tag) => (
+//                   <span
+//                     key={tag}
+//                     className="rounded-full border border-white/[0.08] px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-600 transition-colors duration-300 group-hover:border-sky-400/15 group-hover:text-zinc-400"
+//                   >
+//                     {tag}
+//                   </span>
+//                 ))}
+
+//               </div>
+
+//               {/* Bottom animated line */}
+
+//               <motion.div
+//                 className="absolute bottom-0 left-0 h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent"
+//                 initial={{
+//                   width: "0%",
+//                 }}
+//                 whileHover={{
+//                   width: "100%",
+//                 }}
+//                 transition={{
+//                   duration: 0.5,
+//                 }}
+//               />
+
+//             </div>
+//           </motion.a>
+
 //         </div>
 
 //         {/* Bottom line */}
@@ -758,13 +886,11 @@
 //           }}
 //           className="mt-20 h-px origin-left bg-gradient-to-r from-sky-400/40 via-purple-400/20 to-transparent"
 //         />
+
 //       </div>
 //     </section>
 //   );
 // }
-
-
-
 
 
 
@@ -830,28 +956,10 @@ export default function Projects() {
     });
 
     return () => {
-      window.removeEventListener(
-        "mousemove",
-        handleMouseMove
-      );
-
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  /*
-   * Scroll direction based variants
-   *
-   * DOWN:
-   * Normal bottom-to-top entrance.
-   *
-   * UP:
-   * Featured content comes from right.
-   * Other cards alternate left / right.
-   */
 
   const featuredVariants = {
     hidden: {
@@ -872,13 +980,13 @@ export default function Projects() {
   return (
     <section
       id="work"
-      className="relative overflow-hidden border-b bg-black text-white"
+      className="relative overflow-hidden border-b bg-[#f8fafc] text-slate-900"
       style={{
-        borderColor: "rgba(125, 211, 252, 0.12)",
+        borderColor: "rgba(15, 23, 42, 0.08)",
       }}
     >
       {/* =====================================================
-          ANIMATED BACKGROUND
+          LIGHT ANIMATED BACKGROUND
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -896,20 +1004,20 @@ export default function Projects() {
             damping: 25,
             mass: 0.8,
           }}
-          className="absolute h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-[120px]"
+          className="absolute h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-[120px]"
           style={{
             background:
-              "radial-gradient(circle, rgba(56,189,248,0.7), transparent 65%)",
+              "radial-gradient(circle, rgba(56,189,248,0.20), transparent 65%)",
           }}
         />
 
         {/* Ambient glows */}
 
-        <div className="absolute left-[15%] top-[20%] h-72 w-72 rounded-full bg-blue-500/5 blur-[120px]" />
+        <div className="absolute left-[10%] top-[15%] h-72 w-72 rounded-full bg-sky-400/[0.07] blur-[120px]" />
 
-        <div className="absolute right-[15%] top-[45%] h-80 w-80 rounded-full bg-purple-500/5 blur-[130px]" />
+        <div className="absolute right-[12%] top-[40%] h-80 w-80 rounded-full bg-violet-400/[0.06] blur-[130px]" />
 
-        <div className="absolute bottom-[10%] left-[40%] h-72 w-72 rounded-full bg-cyan-400/5 blur-[120px]" />
+        <div className="absolute bottom-[8%] left-[40%] h-72 w-72 rounded-full bg-cyan-400/[0.06] blur-[120px]" />
 
         {/* SKY BLUE LINE */}
 
@@ -917,12 +1025,11 @@ export default function Projects() {
           className="absolute left-[-30%] top-[12%] h-px w-[160%]"
           style={{
             background:
-              "linear-gradient(90deg, transparent, #38bdf8, transparent)",
-            boxShadow: "0 0 12px #38bdf8",
+              "linear-gradient(90deg, transparent, rgba(14,165,233,.28), transparent)",
           }}
           animate={{
             x: ["-10%", "20%", "-10%"],
-            opacity: [0.15, 0.8, 0.15],
+            opacity: [0.15, 0.65, 0.15],
           }}
           transition={{
             duration: 7,
@@ -937,12 +1044,11 @@ export default function Projects() {
           className="absolute left-[-30%] top-[22%] h-px w-[160%]"
           style={{
             background:
-              "linear-gradient(90deg, transparent, #a855f7, transparent)",
-            boxShadow: "0 0 12px #a855f7",
+              "linear-gradient(90deg, transparent, rgba(139,92,246,.20), transparent)",
           }}
           animate={{
             x: ["20%", "-15%", "20%"],
-            opacity: [0.1, 0.65, 0.1],
+            opacity: [0.1, 0.5, 0.1],
           }}
           transition={{
             duration: 9,
@@ -957,12 +1063,11 @@ export default function Projects() {
           className="absolute left-[-30%] top-[34%] h-px w-[160%]"
           style={{
             background:
-              "linear-gradient(90deg, transparent, #22d3ee, transparent)",
-            boxShadow: "0 0 12px #22d3ee",
+              "linear-gradient(90deg, transparent, rgba(6,182,212,.22), transparent)",
           }}
           animate={{
             x: ["-15%", "18%", "-15%"],
-            opacity: [0.1, 0.7, 0.1],
+            opacity: [0.1, 0.6, 0.1],
           }}
           transition={{
             duration: 6,
@@ -977,12 +1082,11 @@ export default function Projects() {
           className="absolute left-[-30%] top-[46%] h-px w-[160%]"
           style={{
             background:
-              "linear-gradient(90deg, transparent, #34d399, transparent)",
-            boxShadow: "0 0 12px #34d399",
+              "linear-gradient(90deg, transparent, rgba(16,185,129,.16), transparent)",
           }}
           animate={{
             x: ["15%", "-20%", "15%"],
-            opacity: [0.08, 0.6, 0.08],
+            opacity: [0.08, 0.45, 0.08],
           }}
           transition={{
             duration: 11,
@@ -997,12 +1101,11 @@ export default function Projects() {
           className="absolute left-[-30%] top-[58%] h-px w-[160%]"
           style={{
             background:
-              "linear-gradient(90deg, transparent, #f472b6, transparent)",
-            boxShadow: "0 0 12px #f472b6",
+              "linear-gradient(90deg, transparent, rgba(236,72,153,.14), transparent)",
           }}
           animate={{
             x: ["-20%", "15%", "-20%"],
-            opacity: [0.08, 0.55, 0.08],
+            opacity: [0.08, 0.4, 0.08],
           }}
           transition={{
             duration: 8,
@@ -1017,12 +1120,11 @@ export default function Projects() {
           className="absolute left-[-30%] top-[70%] h-px w-[160%]"
           style={{
             background:
-              "linear-gradient(90deg, transparent, #f59e0b, transparent)",
-            boxShadow: "0 0 12px #f59e0b",
+              "linear-gradient(90deg, transparent, rgba(245,158,11,.16), transparent)",
           }}
           animate={{
             x: ["20%", "-18%", "20%"],
-            opacity: [0.08, 0.5, 0.08],
+            opacity: [0.08, 0.4, 0.08],
           }}
           transition={{
             duration: 10,
@@ -1037,12 +1139,11 @@ export default function Projects() {
           className="absolute left-[-30%] top-[82%] h-px w-[160%]"
           style={{
             background:
-              "linear-gradient(90deg, transparent, #818cf8, transparent)",
-            boxShadow: "0 0 12px #818cf8",
+              "linear-gradient(90deg, transparent, rgba(99,102,241,.16), transparent)",
           }}
           animate={{
             x: ["-18%", "22%", "-18%"],
-            opacity: [0.1, 0.65, 0.1],
+            opacity: [0.1, 0.5, 0.1],
           }}
           transition={{
             duration: 12,
@@ -1058,7 +1159,7 @@ export default function Projects() {
           style={{
             transform: "rotate(-15deg)",
             background:
-              "linear-gradient(90deg, transparent, rgba(56,189,248,.45), transparent)",
+              "linear-gradient(90deg, transparent, rgba(14,165,233,.18), transparent)",
           }}
           animate={{
             x:
@@ -1080,7 +1181,7 @@ export default function Projects() {
           style={{
             transform: "rotate(12deg)",
             background:
-              "linear-gradient(90deg, transparent, rgba(168,85,247,.4), transparent)",
+              "linear-gradient(90deg, transparent, rgba(139,92,246,.16), transparent)",
           }}
           animate={{
             x:
@@ -1098,10 +1199,10 @@ export default function Projects() {
         {/* PARTICLES */}
 
         <motion.div
-          className="absolute left-[20%] top-[30%] h-1 w-1 rounded-full bg-cyan-400 shadow-[0_0_12px_#22d3ee]"
+          className="absolute left-[20%] top-[30%] h-1 w-1 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(14,165,233,.5)]"
           animate={{
             y: [-20, 30, -20],
-            opacity: [0.2, 1, 0.2],
+            opacity: [0.2, 0.8, 0.2],
           }}
           transition={{
             duration: 4,
@@ -1110,10 +1211,10 @@ export default function Projects() {
         />
 
         <motion.div
-          className="absolute left-[75%] top-[55%] h-1 w-1 rounded-full bg-purple-400 shadow-[0_0_12px_#a855f7]"
+          className="absolute left-[75%] top-[55%] h-1 w-1 rounded-full bg-violet-400 shadow-[0_0_10px_rgba(139,92,246,.45)]"
           animate={{
             y: [20, -30, 20],
-            opacity: [0.2, 1, 0.2],
+            opacity: [0.2, 0.8, 0.2],
           }}
           transition={{
             duration: 5,
@@ -1122,10 +1223,10 @@ export default function Projects() {
         />
 
         <motion.div
-          className="absolute left-[45%] top-[75%] h-1 w-1 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]"
+          className="absolute left-[45%] top-[75%] h-1 w-1 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,.45)]"
           animate={{
             x: [-20, 25, -20],
-            opacity: [0.2, 1, 0.2],
+            opacity: [0.2, 0.8, 0.2],
           }}
           transition={{
             duration: 6,
@@ -1133,14 +1234,14 @@ export default function Projects() {
           }}
         />
 
-        {/* Grid */}
+        {/* Light Grid */}
 
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
+              linear-gradient(rgba(15,23,42,0.45) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(15,23,42,0.45) 1px, transparent 1px)
             `,
             backgroundSize: "70px 70px",
           }}
@@ -1148,9 +1249,9 @@ export default function Projects() {
 
         {/* Fade */}
 
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#f8fafc] to-transparent" />
 
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f8fafc] to-transparent" />
       </div>
 
       {/* =====================================================
@@ -1182,22 +1283,22 @@ export default function Projects() {
           }}
         >
           <div className="flex items-center gap-3">
-            <span className="h-px w-10 bg-sky-400" />
+            <span className="h-px w-10 bg-sky-500" />
 
-            <span className="text-xs font-medium uppercase tracking-[0.3em] text-sky-300">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">
               Selected Work
             </span>
           </div>
 
           <div className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <h2 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
               A few things
-              <span className="block text-sky-300">
+              <span className="block text-sky-600">
                 I&apos;ve built.
               </span>
             </h2>
 
-            <p className="max-w-sm text-sm leading-7 text-zinc-500">
+            <p className="max-w-sm text-sm leading-7 text-slate-500">
               A collection of digital products, interfaces and
               full-stack experiences crafted with modern
               technologies.
@@ -1211,9 +1312,7 @@ export default function Projects() {
 
         <motion.a
           href={featured.link || "#"}
-          target={
-            featured.link ? "_blank" : undefined
-          }
+          target={featured.link ? "_blank" : undefined}
           rel={
             featured.link
               ? "noopener noreferrer"
@@ -1234,17 +1333,17 @@ export default function Projects() {
         >
           {/* Animated border */}
 
-          <div className="absolute inset-0 rounded-[28px] bg-gradient-to-r from-sky-500/40 via-purple-500/10 to-cyan-400/30 opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="absolute inset-0 rounded-[28px] bg-gradient-to-r from-sky-400/40 via-violet-400/20 to-cyan-400/30 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
-          <div className="relative m-[1px] grid overflow-hidden rounded-[27px] bg-[#080808] md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative m-[1px] grid overflow-hidden rounded-[27px] border border-slate-200/80 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.07)] transition-all duration-500 group-hover:shadow-[0_25px_80px_rgba(14,165,233,0.12)] md:grid-cols-[1.05fr_0.95fr]">
 
             {/* Featured visual */}
 
-            <div className="relative min-h-[350px] overflow-hidden border-b border-white/5 md:min-h-[460px] md:border-b-0 md:border-r">
+            <div className="relative min-h-[350px] overflow-hidden border-b border-slate-200/80 bg-gradient-to-br from-slate-50 via-white to-sky-50/70 md:min-h-[460px] md:border-b-0 md:border-r">
 
               {/* Glow */}
 
-              <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500/10 blur-[100px] transition-all duration-700 group-hover:bg-sky-400/20" />
+              <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400/10 blur-[100px] transition-all duration-700 group-hover:bg-sky-400/20" />
 
               {/* Blue moving line */}
 
@@ -1273,7 +1372,7 @@ export default function Projects() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute left-[-20%] top-[58%] h-px w-[140%] bg-gradient-to-r from-transparent via-purple-400/40 to-transparent"
+                className="absolute left-[-20%] top-[58%] h-px w-[140%] bg-gradient-to-r from-transparent via-violet-400/40 to-transparent"
               />
 
               {/* Big letter */}
@@ -1295,17 +1394,17 @@ export default function Projects() {
                 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <span className="select-none text-[12rem] font-bold leading-none text-white/[0.035] transition-all duration-700 group-hover:text-sky-300/[0.08] sm:text-[15rem]">
+                <span className="select-none text-[12rem] font-bold leading-none text-slate-900/[0.045] transition-all duration-700 group-hover:text-sky-500/[0.10] sm:text-[15rem]">
                   {featured.title.charAt(0)}
                 </span>
               </motion.div>
 
               {/* Featured badge */}
 
-              <div className="absolute left-7 top-7 flex items-center gap-2 rounded-full border border-sky-400/20 bg-black/60 px-4 py-2 backdrop-blur-xl">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-400" />
+              <div className="absolute left-7 top-7 flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-xl">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-500" />
 
-                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-sky-300">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-700">
                   Featured Project
                 </span>
               </div>
@@ -1314,19 +1413,19 @@ export default function Projects() {
 
               <div className="absolute bottom-7 left-7 right-7 flex items-end justify-between">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.25em] text-zinc-600">
+                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-slate-400">
                     Case Study
                   </p>
 
-                  <p className="mt-1 text-sm text-zinc-400">
+                  <p className="mt-1 text-sm text-slate-500">
                     Full Stack Experience
                   </p>
                 </div>
 
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-500 group-hover:border-sky-400/40 group-hover:bg-sky-400/10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white/80 shadow-sm backdrop-blur-xl transition-all duration-500 group-hover:border-sky-300 group-hover:bg-sky-50 group-hover:shadow-md">
                   <ArrowUpRight
                     size={20}
-                    className="text-sky-300 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
+                    className="text-sky-600 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
                   />
                 </div>
               </div>
@@ -1334,21 +1433,21 @@ export default function Projects() {
 
             {/* Featured content */}
 
-            <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
+            <div className="flex flex-col justify-center bg-white p-8 sm:p-10 lg:p-14">
 
               <div className="mb-5 flex items-center gap-3">
-                <span className="h-px w-8 bg-sky-400/70" />
+                <span className="h-px w-8 bg-sky-500/70" />
 
-                <span className="text-xs uppercase tracking-[0.25em] text-zinc-600">
+                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
                   Featured
                 </span>
               </div>
 
-              <h3 className="max-w-xl text-3xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200 sm:text-4xl lg:text-5xl">
+              <h3 className="max-w-xl text-3xl font-semibold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-sky-700 sm:text-4xl lg:text-5xl">
                 {featured.title}
               </h3>
 
-              <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-500 sm:text-base">
+              <p className="mt-6 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
                 {featured.description}
               </p>
 
@@ -1358,7 +1457,7 @@ export default function Projects() {
                 {featured.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/10 bg-white/[0.025] px-3.5 py-2 text-[11px] text-zinc-400 transition-all duration-300 group-hover:border-sky-400/20 group-hover:text-sky-200"
+                    className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-2 text-[11px] font-medium text-slate-500 transition-all duration-300 group-hover:border-sky-200 group-hover:bg-sky-50 group-hover:text-sky-700"
                   >
                     {tag}
                   </span>
@@ -1367,12 +1466,12 @@ export default function Projects() {
 
               {/* CTA */}
 
-              <div className="mt-10 flex items-center gap-3 text-sm font-medium text-sky-300">
+              <div className="mt-10 flex items-center gap-3 text-sm font-semibold text-sky-600">
                 <span>
                   Explore project
                 </span>
 
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-sky-400/20 bg-sky-400/5 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-sky-400/10">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-sky-200 bg-sky-50 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-sky-100">
                   <ExternalLink size={14} />
                 </span>
               </div>
@@ -1388,15 +1487,6 @@ export default function Projects() {
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
           {rest.map((project, index) => {
-
-            /*
-             * Alternate direction when scrolling upward:
-             *
-             * 0 -> left
-             * 1 -> right
-             * 2 -> left
-             * 3 -> right
-             */
 
             const cardVariants = {
               hidden: {
@@ -1459,22 +1549,22 @@ export default function Projects() {
 
                 {/* Hover border */}
 
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-purple-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-violet-400/15 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                <div className="relative m-[1px] flex h-full min-h-[300px] flex-col rounded-[15px] border border-white/[0.08] bg-[#080808] p-7 transition-all duration-500 group-hover:border-sky-400/20 group-hover:bg-[#0a0a0a]">
+                <div className="relative m-[1px] flex h-full min-h-[300px] flex-col rounded-[15px] border border-slate-200 bg-white p-7 shadow-[0_10px_35px_rgba(15,23,42,0.05)] transition-all duration-500 group-hover:border-sky-200 group-hover:bg-white group-hover:shadow-[0_20px_50px_rgba(14,165,233,0.10)]">
 
                   {/* Top */}
 
                   <div className="flex items-start justify-between gap-4">
 
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] text-sm font-semibold text-sky-300 transition-all duration-500 group-hover:border-sky-400/30 group-hover:bg-sky-400/10">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold text-sky-600 transition-all duration-500 group-hover:border-sky-200 group-hover:bg-sky-50">
                       {String(index + 1).padStart(
                         2,
                         "0"
                       )}
                     </div>
 
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition-all duration-300 group-hover:border-sky-400/30 group-hover:text-sky-300">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-400 transition-all duration-300 group-hover:border-sky-200 group-hover:text-sky-600">
                       <ArrowUpRight
                         size={17}
                         className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -1485,13 +1575,13 @@ export default function Projects() {
 
                   {/* Title */}
 
-                  <h3 className="mt-8 text-xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200">
+                  <h3 className="mt-8 text-xl font-semibold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-sky-700">
                     {project.title}
                   </h3>
 
                   {/* Description */}
 
-                  <p className="mt-4 text-sm leading-7 text-zinc-500">
+                  <p className="mt-4 text-sm leading-7 text-slate-500">
                     {project.description}
                   </p>
 
@@ -1501,7 +1591,7 @@ export default function Projects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/[0.08] px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-600 transition-colors duration-300 group-hover:border-sky-400/15 group-hover:text-zinc-400"
+                        className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-slate-400 transition-colors duration-300 group-hover:border-sky-200 group-hover:bg-sky-50 group-hover:text-slate-500"
                       >
                         {tag}
                       </span>
@@ -1568,22 +1658,22 @@ export default function Projects() {
 
             {/* Hover border */}
 
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-purple-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/30 via-violet-400/15 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-            <div className="relative m-[1px] flex h-full min-h-[300px] flex-col rounded-[15px] border border-white/[0.08] bg-[#080808] p-7 transition-all duration-500 group-hover:border-sky-400/20 group-hover:bg-[#0a0a0a]">
+            <div className="relative m-[1px] flex h-full min-h-[300px] flex-col rounded-[15px] border border-slate-200 bg-white p-7 shadow-[0_10px_35px_rgba(15,23,42,0.05)] transition-all duration-500 group-hover:border-sky-200 group-hover:shadow-[0_20px_50px_rgba(14,165,233,0.10)]">
 
               {/* Top */}
 
               <div className="flex items-start justify-between gap-4">
 
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] text-sm font-semibold text-sky-300 transition-all duration-500 group-hover:border-sky-400/30 group-hover:bg-sky-400/10">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold text-sky-600 transition-all duration-500 group-hover:border-sky-200 group-hover:bg-sky-50">
                   {String(rest.length + 1).padStart(
                     2,
                     "0"
                   )}
                 </div>
 
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition-all duration-300 group-hover:border-sky-400/30 group-hover:text-sky-300">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-400 transition-all duration-300 group-hover:border-sky-200 group-hover:text-sky-600">
                   <ArrowUpRight
                     size={17}
                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -1594,13 +1684,13 @@ export default function Projects() {
 
               {/* Title */}
 
-              <h3 className="mt-8 text-xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200">
+              <h3 className="mt-8 text-xl font-semibold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-sky-700">
                 Restaurant Project
               </h3>
 
               {/* Description */}
 
-              <p className="mt-4 text-sm leading-7 text-zinc-500">
+              <p className="mt-4 text-sm leading-7 text-slate-500">
                 A modern restaurant website crafted with an immersive
                 interface, smooth interactions and a premium digital
                 dining experience.
@@ -1617,7 +1707,7 @@ export default function Projects() {
                 ].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/[0.08] px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-600 transition-colors duration-300 group-hover:border-sky-400/15 group-hover:text-zinc-400"
+                    className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-slate-400 transition-colors duration-300 group-hover:border-sky-200 group-hover:bg-sky-50 group-hover:text-slate-500"
                   >
                     {tag}
                   </span>
@@ -1662,7 +1752,7 @@ export default function Projects() {
           transition={{
             duration: 1,
           }}
-          className="mt-20 h-px origin-left bg-gradient-to-r from-sky-400/40 via-purple-400/20 to-transparent"
+          className="mt-20 h-px origin-left bg-gradient-to-r from-sky-400/40 via-violet-400/20 to-transparent"
         />
 
       </div>
