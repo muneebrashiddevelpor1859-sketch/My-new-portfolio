@@ -146,5 +146,12 @@ export const projects: Project[] = [
     tags: ["React", "Node.js"],
     link: "https://data-management-system-next.vercel.app/login",
   },
+  {
+    title: "Restaurant Project",
+    description:
+      "A modern restaurant website crafted with an immersive interface, smooth interactions and a premium digital dining experience.",
+    tags: ["Next.js", "Tailwind CSS"],
+    link: "https://restorent-project-old.vercel.app/",
+  },
 ];
 

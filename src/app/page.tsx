@@ -8,10 +8,12 @@ import Process from "@/components/Process";
 import CtaBanner from "@/components/CtaBanner";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollManager from "@/components/ScrollManager";
 
 export default function Home() {
   return (
     <>
+      <ScrollManager />
       <Nav />
       <main>
         <Hero />
